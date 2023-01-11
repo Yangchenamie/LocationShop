@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "index-nav": "/components/indexNav/indexNav",
+    "order": "/components/order/order"
+  }
+}

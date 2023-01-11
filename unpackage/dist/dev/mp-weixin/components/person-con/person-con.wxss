@@ -1,0 +1,19 @@
+
+.content{
+  margin-top: 18rpx;
+  background-color: #fff;
+}
+._ul ._li{
+  display: flex;
+  padding:0 70rpx ;
+  font-size: 36rpx;
+  height: 120rpx;
+  align-items: center;
+  border-bottom: 2rpx solid #F1F1F1;
+  justify-content: space-between;
+}
+._ul ._li image{
+  width: 24rpx;
+  height: 24rpx;
+}
+

@@ -1,0 +1,94 @@
+.conHeader.data-v-c547daf4 {
+  display: flex;
+  height: 200rpx;
+  align-items: center;
+  border-bottom: 20rpx solid #F1F1F1;
+}
+.conHeader image.data-v-c547daf4 {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  margin-left: 56rpx;
+}
+.conHeader .headerText.data-v-c547daf4 {
+  display: flex;
+  color: 36rpx;
+  flex-flow: column;
+  line-height: 44rpx;
+  margin-left: 42rpx;
+  font-size: 36rpx;
+}
+.conHeader .date.data-v-c547daf4 {
+  font-size: 28rpx;
+  color: #808080;
+  margin-left: 110rpx;
+  margin-top: 45rpx;
+}
+.content .con-title.data-v-c547daf4 {
+  font-size: 28rpx;
+  display: flex;
+  justify-content: space-between;
+  height: 62rpx;
+  align-items: center;
+  border-bottom: 2rpx solid #C5C5C5;
+  padding: 0 50rpx;
+  box-sizing: border-box;
+}
+.content .con-item ._ul ._li.data-v-c547daf4,
+.content .con-item .computedTotal.data-v-c547daf4 {
+  font-size: 28rpx;
+  display: flex;
+  flex-flow: row;
+  padding: 0 50rpx;
+  box-sizing: border-box;
+  margin: 44rpx 0;
+  line-height: 40rpx;
+}
+.content .con-item ._ul ._li .name.data-v-c547daf4,
+.content .con-item .computedTotal .name.data-v-c547daf4 {
+  flex: 0.6;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #575555;
+}
+.content .con-item ._ul ._li .number.data-v-c547daf4,
+.content .con-item .computedTotal .number.data-v-c547daf4 {
+  flex: 0.2;
+  text-align: center;
+  color: #575555;
+}
+.content .con-item ._ul ._li .money.data-v-c547daf4,
+.content .con-item .computedTotal .money.data-v-c547daf4 {
+  flex: 0.2;
+  text-align: center;
+}
+.content .computedTotal.data-v-c547daf4 {
+  border-bottom: 2rpx solid #C5C5C5;
+  margin: 44rpx 0 0 !important;
+  padding: 0 50rpx 44rpx !important;
+}
+.content .allColor.data-v-c547daf4 {
+  color: #000 !important;
+}
+.content .btnItem.data-v-c547daf4 {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 190rpx;
+}
+.content .btnItem .reject.data-v-c547daf4 {
+  border: 2rpx solid #A53131;
+  width: 160rpx;
+  height: 80rpx;
+  background-color: #fff;
+  line-height: 82rpx;
+}
+.content .btnItem .agree.data-v-c547daf4 {
+  background-color: #A53131;
+  color: #fff;
+  width: 160rpx;
+  height: 80rpx;
+  border: 2rpx solid #A53131;
+  line-height: 82rpx;
+}
+

@@ -1,0 +1,1 @@
+<view class="content"><person-header vue-id="e8437cc0-1" bind:__l="__l"></person-header><person-con vue-id="e8437cc0-2" bind:__l="__l"></person-con></view>

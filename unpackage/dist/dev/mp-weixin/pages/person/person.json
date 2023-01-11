@@ -1,0 +1,7 @@
+{
+  "navigationBarBackgroundColor": "#6792FF",
+  "usingComponents": {
+    "person-header": "/components/person-header/person-header",
+    "person-con": "/components/person-con/person-con"
+  }
+}
