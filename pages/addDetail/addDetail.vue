@@ -9,7 +9,7 @@
         保存
       </view>
     </view>
-    <view class="addPic">
+    <view class="addPic" @click="postPic">
       <image src="/static/add.png" mode=""></image>
     </view>
     <view class="con">
@@ -49,10 +49,28 @@
       }
     },
     methods: {
-      switch1Change: function (e) {
-                  console.log('switch1 发生 change 事件，携带值为', e.detail.value)
-              },
-
+      switch1Change: function(e) {
+        console.log('switch1 发生 change 事件，携带值为', e.detail.value)
+      },
+      postPic(){
+        uni.showActionSheet({
+          itemList:['拍摄','从相册选择图片'],
+          success(e) {
+            var index = e.tapIndex;
+            if(index === 0){
+              console.log("拍摄");
+            }else if(index ===1 ){
+              uni.chooseImage({
+                count:1,
+                sizeType:['original','compressed'],
+                success(res) {
+                  console.log(res.tempFilePaths[0]);
+                }
+              })
+            }
+          }
+        })
+      }
     },
 
   }
@@ -113,14 +131,15 @@
       font-size: 40rpx;
     }
   }
-  
-  .ispromotional{
+
+  .ispromotional {
     margin-top: 44rpx;
     display: flex;
     justify-content: space-between;
     padding: 0 80rpx;
     font-size: 40rpx;
-    & switch{
+
+    & switch {
       // margin-left: 80rpx;
     }
   }

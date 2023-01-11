@@ -132,7 +132,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
 //
 //
 //
@@ -185,7 +185,27 @@ var _default =
   methods: {
     switch1Change: function switch1Change(e) {
       console.log('switch1 发生 change 事件，携带值为', e.detail.value);
+    },
+    postPic: function postPic() {
+      uni.showActionSheet({
+        itemList: ['拍摄', '从相册选择图片'],
+        success: function success(e) {
+          var index = e.tapIndex;
+          if (index === 0) {
+            console.log("拍摄");
+          } else if (index === 1) {
+            uni.chooseImage({
+              count: 1,
+              sizeType: ['original', 'compressed'],
+              success: function success(res) {
+                console.log(res.tempFilePaths[0]);
+              } });
+
+          }
+        } });
+
     } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 
