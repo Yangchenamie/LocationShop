@@ -1,0 +1,82 @@
+.tabNav {
+  position: relative;
+  width: 100%;
+  line-height: 92rpx;
+  text-align: center;
+  padding: 0 40rpx;
+  box-sizing: border-box;
+  color: #000;
+  font-size: 40rpx;
+  border-bottom: 20rpx solid #F1F1F1;
+}
+.tabNav .tabImg {
+  position: absolute;
+  left: 20px;
+  width: 40rpx;
+  height: 40rpx;
+}
+.tabNav .tabImg image {
+  width: 100%;
+  height: 100%;
+}
+.con .con-tab {
+  width: 100%;
+  display: flex;
+  font-size: 24rpx;
+  align-items: baseline;
+  padding-left: 48rpx;
+  padding-top: 30rpx;
+}
+.con .con-tab picker {
+  display: flex;
+}
+.con .con-tab picker .tabMonth {
+  font-size: 52rpx;
+  font-weight: 500;
+  margin-right: 6rpx;
+}
+.con .con-tab image {
+  width: 25rpx;
+  height: 25rpx;
+}
+.con .con-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 34rpx;
+  font-size: 24rpx;
+  height: 200rpx;
+  border-bottom: 2rpx solid #f1f1f1;
+}
+.con .con-item image {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  margin-top: -10rpx;
+}
+.con .con-item .item-fr {
+  display: flex;
+  flex-flow: column;
+  margin-left: 16rpx;
+  margin-top: 8rpx;
+}
+.con .con-item .item-fr view {
+  margin: 5rpx 0;
+}
+.con .con-item .item-fr .eval {
+  font-size: 28rpx;
+  margin-top: 20rpx;
+}
+.con .item-time {
+  width: 30%;
+  position: absolute;
+  right: 0rpx;
+  top: 40rpx;
+  font-size: 28rpx;
+  color: #808080;
+}
+.con .item-time .item-star image {
+  width: 22rpx;
+  height: 22rpx;
+}
+

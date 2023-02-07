@@ -132,7 +132,62 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -180,32 +235,67 @@ var _default =
   data: function data() {
     return {
       // docModel:true
-    };
+      select: false,
+      // grade_name:'--请选择--',
+      array: [
+      '全部',
+      '饮料',
+      '零食',
+      '纸巾'],
+
+      index: 0 };
+
   },
   methods: {
     switch1Change: function switch1Change(e) {
       console.log('switch1 发生 change 事件，携带值为', e.detail.value);
     },
-    postPic: function postPic() {
-      uni.showActionSheet({
-        itemList: ['拍摄', '从相册选择图片'],
-        success: function success(e) {
-          var index = e.tapIndex;
-          if (index === 0) {
-            console.log("拍摄");
-          } else if (index === 1) {
-            uni.chooseImage({
-              count: 1,
-              sizeType: ['original', 'compressed'],
-              success: function success(res) {
-                console.log(res.tempFilePaths[0]);
-              } });
+    // postPic() {
+    //   uni.showActionSheet({
+    //     itemList: ['拍摄', '从相册选择图片'],
+    //     success(e) {
+    //       var index = e.tapIndex;
+    //       if (index === 0) {
+    //         console.log("拍摄");
+    //       } else if (index === 1) {
+    //         uni.chooseImage({
+    //           count: 1,
+    //           sizeType: ['original', 'compressed'],
+    //           success(res) {
+    //             console.log(res.tempFilePaths[0]);
+    //           }
+    //         })
+    //       }
+    //     }
+    //   })
+    // },
+    bindPickerChange: function bindPickerChange(e) {//改变的事件名
+      console.log('picker发送选择改变，携带值为', e.target.value);
+      // 用于输出改变索引值
+      this.index = e.target.value; //将数组改变索引赋给定义的index变量
+      this.jg = this.array[this.index]; //将array【改变索引】的值赋给定义的jg变量
+      console.log("籍贯为：", this.jg); //输出获取的籍贯值，例如：中国
+    }
 
-          }
-        } });
-
-    } } };exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+    //   bindShowMsg() {
+    //         this.setData({
+    //         select: !this.data.select
+    //         })
+    //       },
+    //       /**
+    //        * 已选下拉框
+    //        */
+    //       mySelect(e) {
+    //         console.log(e)
+    //         var name = e.currentTarget.dataset.name
+    //         this.setData({
+    //         grade_name: name,
+    //         select: false
+    //         })
+    //       },  
+    // },
+    //下拉框
+  } };exports.default = _default;
 
 /***/ }),
 

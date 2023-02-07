@@ -1,1 +1,1 @@
-<view class="content"><view class="_ul"><view class="_li"><view>我的评价</view><image src="../../static/right.png" mode></image></view><view class="_li"><view>设置</view><image src="../../static/right.png" mode></image></view></view></view>
+<view class="content"><view class="_ul"><view class="_li"><view>我的评价</view><image src="../../static/right.png" mode></image></view><view data-event-opts="{{[['tap',[['gotoPage',['$event']]]]]}}" bindtap="__e" class="_li"><view>设置</view><image src="../../static/right.png" mode></image></view></view></view>

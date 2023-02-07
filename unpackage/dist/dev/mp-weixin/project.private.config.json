@@ -34,6 +34,27 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/addDetail/addDetail",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/settings/settings",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/evaluation/evaluation",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

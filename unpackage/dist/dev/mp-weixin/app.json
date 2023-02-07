@@ -4,7 +4,9 @@
     "pages/stocks/stocks",
     "pages/person/person",
     "pages/addDetail/addDetail",
-    "pages/orderDetail/orderDetail"
+    "pages/orderDetail/orderDetail",
+    "pages/settings/settings",
+    "pages/evaluation/evaluation"
   ],
   "subPackages": [],
   "window": {

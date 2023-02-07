@@ -7,8 +7,8 @@
         </view>
         <image src="../../static/right.png" mode=""></image>
       </li>
-      <li>
-        <view class="">设置</view>
+      <li @click="gotoPage">
+        <view>设置</view>
         <image src="../../static/right.png" mode=""></image>
       </li>
     </ul>
@@ -22,6 +22,13 @@
       return {
         
       };
+    },
+    methods:{
+      gotoPage(){
+        uni.navigateTo({
+          url:'../../pages/settings/settings'
+        })
+      }
     }
   }
 </script>
