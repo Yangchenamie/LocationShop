@@ -1,90 +1,35 @@
 <template>
   <view class="container">
     <scroll-view scroll-y="true" class="scroll-x">
-      <!-- <view class="items" :class="active===index?'active':''"  @click="activeChanged(item.cateId);change(index)">饮料</view> -->
-      <!-- <view class="items" :class="active===index?'active':''"  @click="activeChanged(item.cateId);change(index)">零食</view> -->
-      <!-- <view class="items" :class="active===index?'active':''"  ">纸巾</view> -->
-      <view class="items" :class="active===index?'active':''">饮料</view>
-      <view class="items" :class="active===index?'active':''">零食</view>
-      <view class="items" :class="active===index?'active':''">纸巾</view>
+      <view class="items" :class="active===index?'active':''" v-for="(item,index) in classify" :key="item.id"
+        @click="activeChanged(item.id);change(index)">{{item.name}}</view>
     </scroll-view>
-    <!-- <view class="commodity" @click="toCommodityInfo(item.commodityId,item.commodityImg,item.commodityTitle,item.commodityPrice,item.commodityStatus)" v-for="(item,index) in commodity" :key="item.commodityId">
-          <image :src="item.commodityImg" mode=""></image>
-          <view class="commodity-info">
-            <p>{{item.commodityTitle}}</p>
-            <p class="price">￥{{item.commodityPrice}}</p>
-          </view>
-        </view> -->
     <scroll-view scroll-y class="right-scroll-view">
       <view class="cate-rv-con">
-        <!-- <navigator :url="'/pages/commodityInfo/commodityInfo?gid='+item2.id" class="goods-item"> -->
-        <view class="goods-item" @click="showPop()">
+        <view class="goods-item" v-for="(item,index) in goodsInfo" :key="index" @click="getId(item.id,item.productStock)">
           <!-- 商品左侧图片区域 -->
           <view class="goods-item-left">
-            <image src="../../static/4.png" class="goods-pic"></image>
+            <image :src="item.productPicture" class="goods-pic"></image>
           </view>
           <!-- 商品右侧信息区域 -->
           <view class="goods-item-right">
             <!-- 商品标题 -->
-            <view class="goods-name">可口可乐500ml</view>
-
-            <!-- 商品价格 -->
-            <!-- <view class="goods-price">$3.50</view> -->
-            <view class="goods-num">$3.50</view>
-            <view v-show="flag" class="btnNum">
-              <view class="btn" @click="OddAnbSub">-</view>
-              <view class="">{{total}}</view>
-              <view class="btn" @click="AddAnbSub">+</view>
-            </view>
-            <view v-show="!flag" @click="flag = !flag" class="showTotal">x{{total}}</view>
-          </view>
-        </view>
-        <view class="goods-item">
-          <!-- 商品左侧图片区域 -->
-          <view class="goods-item-left">
-            <image src="../../static/6.png" class="goods-pic"></image>
-          </view>
-          <!-- 商品右侧信息区域 -->
-          <view class="goods-item-right">
-            <!-- 商品标题 -->
-            <view class="goods-name">七喜柠檬汽水350ml</view>
-
-            <!-- 商品价格 -->
-            <!-- <view class="goods-price">$5.00</view> -->
-            <view class="goods-num">$5.00</view>
-            <view v-show="flag" class="btnNum">
-              <view class="btn" @click="OddAnbSub">-</view>
-              <view class="">{{total}}</view>
-              <view class="btn" @click="AddAnbSub">+</view>
-            </view>
-            <view v-show="!flag" @click="flag = !flag" class="showTotal">x{{total}}</view>
-          </view>
-        </view>
-        <view class="goods-item">
-          <!-- 商品左侧图片区域 -->
-          <view class="goods-item-left">
-            <image src="../../static/5.png" class="goods-pic"></image>
-          </view>
-          <!-- 商品右侧信息区域 -->
-          <view class="goods-item-right">
-            <!-- 商品标题 -->
-            <view class="goods-name">雪碧350ml</view>
-
-            <!-- 商品价格 -->
-            <!-- <view class="goods-price">$4.00</view> -->
-            <view class="goods-num">$4.00</view>
-            <view v-show="flag" class="btnNum">
-              <view class="btn" @click="OddAnbSub">-</view>
-              <view class="">{{total}}</view>
-              <view class="btn" @click="AddAnbSub">+</view>
-            </view>
-            <view v-show="!flag" @click="flag = !flag" class="showTotal">x{{total}}</view>
+            <view class="goods-name">{{item.productName}}</view>
+            <view class="goods-num">${{item.productPrice}}</view>
+            <view class="showTotal" v-model="item.productStock">x{{item.productStock}}</view>
           </view>
         </view>
       </view>
     </scroll-view>
-    <view class="addGoods" @click="gotoAdd">
-      <image src="../../static/add.png" mode=""></image>
+    <view class="addPic" @click="gotoAdd">
+      +
+    </view>
+    <view class="uniPop" ref="uniPop" v-if="addFlag" id="uniPop" @click="closeMsg">
+      <view class="title" >
+        添加数量
+      </view>
+      <uni-number-box v-model="num" />
+      <button @click="" id="trueShop" @click="add">确认添加</button>
     </view>
   </view>
 </template>
@@ -94,27 +39,118 @@
     name: "choiceIndex",
     data() {
       return {
-        flag:false,
-        total:5
+        flag: false,
+        total: 0,
+        goodsInfo: [],
+        classify: {},
+        classify_id: '',
+        active: 0,
+        current: 0,
+        i: 0,
+        arr: [],
+        addFlag: false,
+        num:1,
+        id:''
+
       };
     },
-    methods:{
-      OddAnbSub(){
-        this.total--;
+    mounted() {
+      this.getClassify()
+      this.getGoodsFirst()
+    },
+    created() {
+
+    },
+    methods: {
+      change(value) {
+        this.numberValue = value
       },
-      AddAnbSub(){
-        this.total++;
+      closeMsg(e) {
+        console.log(e);
+
+        // if (e.target.id != "trueShop") {
+        this.flag = false;
+        // }
+        console.log(this.flag);
       },
-      gotoAdd(){
-        uni.navigateTo({
-          url:'../../pages/addDetail/addDetail'
+      getId(id,val) {
+        this.addFlag = true;
+        this.id = id
+        console.log(this.id);
+        this.num = val
+      },
+      async add(id){
+        
+        const res = await this.request({
+          url:"/supplement/product/update",
+          header:{
+            "Content-Type":"application/json"
+          },
+          data:{
+            "id": this.id, 
+            "productStock": this.num
+          },
+          method:'POST'
         })
-      }
+        console.log(res);
+        this.addFlag = false
+        this.getGoodsFirst()
+      },
+      gotoAdd() {
+        uni.navigateTo({
+          url: '../../pages/addDetail/addDetail'
+        })
+      },
+      async getClassify() {
+        const {
+          data
+        } = await this.request({
+          url: "/supplement/variety/select/8007"
+        })
+        console.log(data);
+        this.classify = data.list
+      },
+      activeChanged(i) {
+        this.classify_id = i
+        this.getGoodsAll(this.classify_id)
+      },
+      change(index) {
+        this.active = index
+        this.current = index
+      },
+      async getGoodsAll(id) {
+        console.log(id);
+        const {
+          data
+        } = await this.request({
+          url: `/supplement/product/selectByV/8007/${id}`
+        })
+        console.log(data);
+        this.goodsInfo = data.list
+      },
+      async getGoodsFirst() {
+        const {
+          data
+        } = await this.request({
+          url: '/supplement/product/selectAll/8007'
+        })
+        console.log('全部', data);
+        this.goodsInfo = data.list
+        for (var i = 0; i < data.list.length; i++) {
+          this.arr.push(data.list[i].productStock)
+        }
+        console.log(this.arr);
+      },
+
+    },
+
+    watch: {
+
     }
   }
 </script>
 
-<style>
+<style scoped lang="less">
   .container {
     display: flex;
     position: relative;
@@ -125,6 +161,7 @@
   .scroll-x {
     width: 180rpx;
     background-color: #fff;
+    min-height: 900rpx;
   }
 
   .scroll-x .items {
@@ -210,27 +247,31 @@
 
   .right-scroll-view {
     border-left: 2rpx solid #f0f0f0;
-    
+
   }
-  .btnNum{
+
+  .btnNum {
     position: absolute;
     display: flex;
     line-height: 50rpx;
     text-align: center;
-    right:  50rpx;
+    right: 50rpx;
     bottom: 0rpx;
   }
-  .btnNum .btn{
+
+  .btnNum .btn {
     width: 50rpx;
     height: 50rpx;
     background-color: #D9D9D9;
   }
-  .btnNum view{
+
+  .btnNum view {
     width: 50rpx;
     height: 50rpx;
     background-color: #fff;
   }
-  .showTotal{
+
+  .showTotal {
     position: absolute;
     height: 50rpx;
     width: 50rpx;
@@ -238,16 +279,68 @@
     color: #575555;
     line-height: 50rpx;
     text-align: center;
-    right:  60rpx;
+    right: 60rpx;
     bottom: 0rpx;
   }
-  .addGoods{
+
+  .addPic {
     position: fixed;
     bottom: 50rpx;
     right: 80rpx;
-  }
-  .addGoods image{
-    width: 116rpx;
     height: 116rpx;
+    width: 116rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 100rpx;
+    color: #FFE6E6;
+    border-bottom: 2rpx solid #f1f1f1;
+    border: 1px solid #FFE6E6;
+    box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.25);
+    line-height: 116rpx;
+  }
+
+  .uniPop {
+    /* display: none !important; */
+    z-index: 99;
+    position: fixed;
+    display: block;
+    width: 80%;
+    height: 400rpx;
+    top: 380rpx;
+    left: 10%;
+    background-color: #fff;
+    border-radius: 50rpx;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    box-shadow: 10rpx 10rpx 20rpx 20rpx rgba(0, 0, 0,.3);
+    
+    & .title{
+      margin: 50rpx 0 40rpx;
+      font-size: 40rpx;
+      text-align: center;
+    }
+    
+    & image {
+      width: 300rpx;
+      height: 300rpx;
+      transform: translateX(50%);
+      margin-left: 75rpx;
+      margin-top: 50rpx;
+      margin-bottom: 20rpx;
+
+    }
+
+    & button {
+      margin-top: 50rpx;
+      width: 260rpx;
+      height: 120rpx;
+      font-size: 50rpx;
+      border-radius: 24rpx;
+      color: #fff;
+      line-height: 120rpx;
+      background-color: #E85757;
+    }
   }
 </style>

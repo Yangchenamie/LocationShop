@@ -4,10 +4,21 @@ import App from './App'
 // #ifndef VUE3
 import Vue from 'vue'
 // Vue.use(ElementUI)
+import {request} from './util/api.js'
+import store from './store/store.js'
+import router from './router/router.js'
+const id = uni.getStorageSync('uId')
+if(id){
+  var socketTask = uni.connectSocket({
+    url:`ws://8.134.133.19:8084/ws?userId=${id}`,
+  })
+}
+console.log(socketTask);
+Vue.prototype.request = request
 Vue.config.productionTip = false
 App.mpType = 'app'
 const app = new Vue({
-    ...App
+    ...App,store,router
 })
 app.$mount()
 // #endif

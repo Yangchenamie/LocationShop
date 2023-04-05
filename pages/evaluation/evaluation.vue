@@ -1,6 +1,6 @@
 <template>
   <view>
-    <view class="tabNav">
+    <!-- <view class="tabNav">
       <view @click="gotoPage" class="tabImg">
         <image src="/static/left.png"></image>
       </view>
@@ -10,7 +10,7 @@
       <!-- <view class="save">
         保存
       </view> -->
-    </view>
+    <!-- </view> -->
     <view class="con">
       <view class="con-tab">
 
@@ -20,8 +20,6 @@
           </view>
 
         </picker>
-
-        <image src="../../static/down.png" mode=""></image>
       </view>
       <view class="con-item">
         <image src="../../static/pic1.jfif" mode=""></image>
@@ -178,11 +176,6 @@
           font-weight: 500;
           margin-right: 6rpx;
         }
-      }
-
-      & image {
-        width: 25rpx;
-        height: 25rpx;
       }
     }
     .con-item{

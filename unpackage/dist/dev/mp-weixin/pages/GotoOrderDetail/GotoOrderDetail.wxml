@@ -1,0 +1,1 @@
+<view data-event-opts="{{[['gotoDeatil',[['to',['$event']]]]]}}" bindgotoDeatil="__e">111</view>

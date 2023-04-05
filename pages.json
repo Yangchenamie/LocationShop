@@ -27,7 +27,7 @@
             "path" : "pages/addDetail/addDetail",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "",
+                "navigationBarTitleText": "添加商品",
                 "enablePullDownRefresh": false
             }
             
@@ -54,7 +54,88 @@
             "path" : "pages/evaluation/evaluation",
             "style" :                                                                                    
             {
+                "navigationBarTitleText": "我的评价",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/search/search",
+            "style" :                                                                                    
+            {
                 "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/station/station",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "信息登记",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/register/register",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/locationReg/locationReg",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/orderList/orderList",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "我的订单",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/GotoOrderDetail/GotoOrderDetail",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/privacy/privacy",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "用户隐私政策",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/changeNickName/changeNickName",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "更换昵称",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/changeStation/changeStation",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "修改信息",
                 "enablePullDownRefresh": false
             }
             

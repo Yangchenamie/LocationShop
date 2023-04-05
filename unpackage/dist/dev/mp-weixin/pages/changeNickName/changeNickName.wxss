@@ -1,0 +1,17 @@
+.con.data-v-65bfedf4 {
+  width: 100%;
+}
+.con input.data-v-65bfedf4 {
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  width: 100%;
+  border-bottom: 2rpx solid #d7d7d7;
+  height: 80rpx;
+}
+.con button.data-v-65bfedf4 {
+  width: 50%;
+  margin: 60rpx auto;
+  background-color: #6792FF;
+  color: #fff;
+}
+

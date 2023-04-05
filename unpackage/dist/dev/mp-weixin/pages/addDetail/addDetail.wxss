@@ -17,6 +17,7 @@
   margin-top: 30rpx;
 }
 .choiceBox.data-v-22a3256c {
+  border-top: 20rpx solid #F1F1F1;
   display: flex;
   justify-content: space-evenly;
   height: 140rpx;
@@ -34,42 +35,77 @@
 }
 .con.data-v-22a3256c {
   width: 100%;
+  border-top: 20rpx solid #F1F1F1;
+}
+.con .addPic.data-v-22a3256c {
+  height: 270rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 100rpx;
+  color: #FFE6E6;
+  border-bottom: 2rpx solid #f1f1f1;
+}
+.con .addPic view.data-v-22a3256c {
+  height: 136rpx;
+  width: 136rpx;
+  border: 1px solid #FFE6E6;
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.25);
+  text-align: center;
+}
+.con .addPic image.data-v-22a3256c {
+  width: 150rpx;
+  height: 150rpx;
 }
 .con .con-item.data-v-22a3256c {
   width: 100%;
   display: flex;
-  height: 214rpx;
-  justify-content: space-around;
+  padding: 36rpx 80rpx;
   align-items: center;
-  border-top: 2rpx solid #F1F1F1;
-  font-size: 28rpx;
+  font-size: 36rpx;
   border-bottom: 2rpx solid #f1f1f1;
+  box-sizing: border-box;
 }
-.con .con-item .itemName.data-v-22a3256c {
-  display: flex;
-  align-items: center;
+.con .con-item input.data-v-22a3256c,
+.con .con-item .uni-list.data-v-22a3256c {
+  margin-left: 100rpx;
+  width: 280rpx;
+  font-size: 34rpx;
 }
-.con .con-item .itemName image.data-v-22a3256c {
-  width: 140rpx;
-  height: 140rpx;
+.con .con-item input.data-v-22a3256c::-webkit-input-placeholder {
+  font-size: 24rpx;
+  color: #C5C0C0;
 }
-.con .con-item .itemName .itemText.data-v-22a3256c {
-  display: flex;
-  flex-flow: column;
-  margin-left: 10rpx;
+.con .con-item .price.data-v-22a3256c {
+  margin-left: 40rpx;
 }
-.con .con-item .itemName .itemText view.data-v-22a3256c {
-  margin: 8rpx 0;
-}
-.con .con-item .add image.data-v-22a3256c {
-  width: 60rpx;
-  height: 60rpx;
+.con .con-item image.data-v-22a3256c {
+  margin-left: 100rpx;
+  width: 30rpx;
+  height: 30rpx;
 }
 .ispromotional.data-v-22a3256c {
-  margin-top: 44rpx;
   display: flex;
   justify-content: space-between;
-  padding: 0 80rpx;
+  padding: 36rpx 80rpx;
   font-size: 40rpx;
+  border-top: 18rpx solid #f1f1f1;
+  border-bottom: 2rpx solid #f1f1f1;
+  box-sizing: border-box;
+}
+.btn.data-v-22a3256c {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 50rpx;
+}
+.btn .save.data-v-22a3256c {
+  width: 200rpx;
+  height: 70rpx;
+  background-color: #A53131;
+  text-align: center;
+  line-height: 70rpx;
+  border-radius: 30rpx;
+  color: #fff;
 }
 

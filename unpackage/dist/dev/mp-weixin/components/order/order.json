@@ -1,4 +1,6 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "order-com": "/components/orderCom/orderCom"
+  },
   "component": true
 }

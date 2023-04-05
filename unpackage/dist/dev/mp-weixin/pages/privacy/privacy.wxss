@@ -1,0 +1,16 @@
+
+.con.data-v-3656bc18{
+    
+    padding: 0 20rpx 0 30rpx;
+    box-sizing: border-box;
+}
+.title.data-v-3656bc18{
+  font-weight: 700;
+  font-size: 36rpx;
+  color: #000;
+}
+.smallTitle.data-v-3656bc18{
+  font-weight: 700;
+  color: #000;
+}
+

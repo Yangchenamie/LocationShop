@@ -2,7 +2,7 @@
   <view class="content">
     <ul>
       <li>
-        <view class="">
+        <view @click="gotoEva">
           我的评价
         </view>
         <image src="../../static/right.png" mode=""></image>
@@ -27,6 +27,11 @@
       gotoPage(){
         uni.navigateTo({
           url:'../../pages/settings/settings'
+        })
+      },
+      gotoEva(){
+        uni.navigateTo({
+          url:'../../pages/evaluation/evaluation'
         })
       }
     }

@@ -1,6 +1,7 @@
 {
   "usingComponents": {
     "index-nav": "/components/indexNav/indexNav",
-    "order": "/components/order/order"
+    "order": "/components/order/order",
+    "uni-popup": "/uni_modules/uni-popup/components/uni-popup/uni-popup"
   }
 }

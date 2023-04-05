@@ -1,6 +1,6 @@
 <template>
   <view>
-    <view class="tabNav">
+    <!-- <view class="tabNav">
       <view @click="gotoPage" class="tabImg">
         <image src="/static/left.png"></image>
       </view>
@@ -10,22 +10,22 @@
       <!-- <view class="save">
         保存
       </view> -->
-    </view>
+    <!-- </view> --> 
     <view class="con">
-      <view class="con-item">
+      <view class="con-item" @click="changePic">
         <view class="item-fl photo" >
           头像
         </view>
-        <view class="item-fr">
-          <image src="../../static/2.jpg" mode=""></image>
+        <view class="item-fr" @click.stop="preview">
+          <image :src="avatarurl" mode=""></image>
         </view>
       </view>
-      <view class="con-item">
+      <view class="con-item" @click="gotoSetName">
         <view class="item-fl">
           昵称
         </view>
         <view class="item-fr">
-          大白
+          {{nickname}}
         </view>
       </view>
       <view class="con-item">
@@ -53,20 +53,77 @@
         </view>
       </view>
     </view>
+    <view class="privacy">用户隐私政策</view>
   </view>
 </template>
 
 <script>
+  import {mapState,mapMutations} from 'vuex'
   export default {
     data() {
       return {
         
       }
     },
+    computed:{
+      ...mapState('m_user',['avatarurl','nickname','uId'])
+    },
     methods: {
+      ...mapMutations('m_user',['updateavatarurl']),
       gotoPage(){
         uni.navigateTo({
           url:'../../pages/person/person'
+        })
+      },
+      gotoSetName(){
+        uni.navigateTo({
+          url:'../changeNickName/changeNickName'
+        })
+      },
+      preview(){
+        const imgUrl = uni.getStorageSync('avatarurl')
+        let imgList=[];
+        imgList.push(imgUrl)
+        console.log(imgList);
+        uni.previewImage({
+          current:0,
+          urls:imgList,
+        })
+        console.log(2222222);
+      },
+      changePic(){
+         let that = this
+        uni.chooseImage({
+          count:1,
+          sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
+          sourceType: ['camera','album'], //从相册选择
+          success: function(res) {
+            console.log(res);
+            that.updateavatarurl(res.tempFilePaths[0])
+            // console.log(this);
+            // str = JSON.stringify(res.tempFilePaths[0])
+            // that.detail.file = res.tempFilePaths;
+             console.log('1111',res.tempFilePaths[0]);
+             uni.uploadFile({
+               url: "http://1.12.244.193:80/oss/upload",
+               filePath: res.tempFilePaths[0],
+               name: 'file',
+               formData: {
+                 file:res.tempFilePaths,
+                 uId:that.uId,
+                 // nickName:that.nickname
+               },
+               success: (uploadFileRes) => {
+                 console.log('111111',uploadFileRes.data);
+                
+               },
+               fail:(res)=>{
+                 
+                 console.log(res);
+               }
+             })
+          },
+          
         })
       }
     }
@@ -124,5 +181,10 @@
         margin-top: 50rpx;
       }
     }
+  }
+  .privacy{
+    text-align: center;
+    color: #6792FF;
+    margin-top: 100rpx;
   }
 </style>

@@ -1,37 +1,89 @@
 <template>
   <view class="content">
     <view class="conHeader">
-      <image src="../../static/3.png" mode=""></image>
+      <!-- <image src="../../static/3.png" mode=""></image> -->
+      <!-- <view class="" v-for="(item,index) in videoList" :key="index">
+        <video :src="item.coverURL" autoplay></video>
+      </view> -->
+      <swiper  indicator-dots circular autoplay >
+        <swiper-item v-for="(item,index) in videoList" :key="index" id="swiperView">
+          <!-- <image src="../../static/3.png"></image> -->
+        <!--  <view class=""> -->
+            <video :src="item[0].playURL" autoplay muted></video>
+          <!-- </view> -->
+        </swiper-item>
+       <!-- <swiper-item>
+          <image src="../../static/3.png"></image>
+        </swiper-item>
+        <swiper-item>
+          <image src="../../static/3.png"></image>
+        </swiper-item> -->
+      </swiper>
     </view>
     <view class="con">
-      <view class="con-title">
+      <view class="con-title" @click="gotoStation">
         <image src="../../static/shoplogo.png" mode=""></image>
         <view class="con-text">
           <view class="conTitle">
             Hello
           </view>
-          <view class="">
-            星星充电汽车充电站
+          <view class="" v-if="stationName">
+            {{stationName}}
           </view>
         </view>
       </view>
     </view>
     <view class="con-sear">
       <image src="../../static/search.png" mode=""></image>
-      <input type="text" placeholder="搜索">
+      <input type="text" placeholder="搜索" @click="goto">
     </view>
   </view>
 </template>
 
 <script>
- 
+import {mapState} from 'vuex'
   export default {
     name:"indexNav",
     data() {
       return {
-        
+        videoList:[],
+        vedioUrl:'',
+        swiperHeight:null,
       };
     },
+    mounted() {
+      this.getVideoList()
+    },
+    components:{
+     
+    },
+    computed:{
+      ...mapState('m_user',['stationName'])
+    },
+    methods:{
+      goto(){
+        console.log(1);
+        uni.navigateTo({
+          url:'../search/search'
+        })
+      },
+      gotoStation(){
+        uni.navigateTo({
+          url:'/pages/station/station'
+        })
+      },
+      async getVideoList(){
+        const {data} = await this.request({
+          url:"/manage/video/getPlayInfo"
+        })
+        console.log(111);
+        console.log(data);
+        console.log(111);
+        this.videoList = data.list
+        console.log('55555',this.videoList);
+      },
+      
+    }
   }
 </script>
 
@@ -44,9 +96,8 @@
     width: 100%;
     background-color: #F5F5F5;
     
-    & image{
+    & video{
       width: 100%;
-      height: 400rpx;
     }
   }
   .con{

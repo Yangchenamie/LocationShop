@@ -1,0 +1,45 @@
+.con {
+  width: 100%;
+}
+.con .con-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 50rpx 66rpx 20rpx;
+  border-bottom: 2rpx solid #f1f1f1;
+  box-sizing: border-box;
+  vertical-align: bottom;
+}
+.con .con-item image {
+  width: 100rpx;
+  height: 100rpx;
+}
+.con .con-item .item-fl {
+  color: #000;
+  font-size: 40rpx;
+}
+.con .con-item .address {
+  width: 400rpx;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.con .con-item .item-fr {
+  color: #595959;
+}
+.con .con-item .photo {
+  margin-top: 50rpx;
+}
+.con .change {
+  width: 60%;
+  margin: 80rpx auto 0;
+  border-radius: 20rpx;
+  border-color: transparent;
+  background-color: #6792FF;
+  color: #fff;
+}
+.privacy {
+  text-align: center;
+  color: #6792FF;
+  margin-top: 100rpx;
+}
+

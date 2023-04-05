@@ -7,8 +7,8 @@
   "setting": {
     "urlCheck": false,
     "es6": false,
-    "postcss": false,
-    "minified": false,
+    "postcss": true,
+    "minified": true,
     "newFeature": true,
     "bigPackageSizeSupport": true,
     "babelSetting": {
@@ -18,8 +18,8 @@
     }
   },
   "compileType": "miniprogram",
-  "libVersion": "2.29.2",
-  "appid": "touristappid",
+  "libVersion": "",
+  "appid": "wx7d7920cbae457b03",
   "projectname": "locationShop",
   "condition": {
     "search": {

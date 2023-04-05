@@ -1,0 +1,48 @@
+.pic.data-v-891c2434 {
+  border-bottom: 2rpx solid #f1f1f1;
+}
+.pic .avatar-wrapper.data-v-891c2434 {
+  padding: 0;
+  width: 56px !important;
+  border-radius: 8px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  border-bottom: 2rpx solid #f1f1f1;
+}
+.pic .avatar.data-v-891c2434 {
+  display: block;
+  width: 56px;
+  height: 56px;
+}
+.nickname.data-v-891c2434 {
+  display: flex;
+  border-bottom: 2rpx solid #f1f1f1;
+  padding: 36rpx;
+}
+.nickname .weui-input.data-v-891c2434 {
+  width: 80%;
+  border: 0;
+  outline: 0;
+  -webkit-appearance: none;
+  background-color: transparent;
+  font-size: inherit;
+  color: inherit;
+  height: 1.41176471em;
+  line-height: 1.41176471;
+  margin-left: 50rpx;
+}
+.btn.data-v-891c2434 {
+  margin-top: 150rpx;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.btn .btnBuy.data-v-891c2434 {
+  width: 60%;
+  padding: 30rpx 0;
+  border-radius: 20rpx;
+  background-color: #6792FF;
+  color: #fff;
+  text-align: center;
+}
+

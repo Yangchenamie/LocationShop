@@ -44,4 +44,9 @@
 .con .con-item .photo {
   margin-top: 50rpx;
 }
+.privacy {
+  text-align: center;
+  color: #6792FF;
+  margin-top: 100rpx;
+}
 

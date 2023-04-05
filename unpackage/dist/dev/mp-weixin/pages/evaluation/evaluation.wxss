@@ -35,10 +35,6 @@
   font-weight: 500;
   margin-right: 6rpx;
 }
-.con .con-tab image {
-  width: 25rpx;
-  height: 25rpx;
-}
 .con .con-item {
   position: relative;
   display: flex;

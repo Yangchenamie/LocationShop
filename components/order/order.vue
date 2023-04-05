@@ -4,81 +4,15 @@
       <view class="date">
         今日
       </view>
-      <navigator url="">查看月账单</navigator>
+      <picker mode="date" fields="month" :value="dataMonth" @change="bindDateChange">
+        <view>
+          <span class="tabMonth">{{dataMonth}}</span>月/{{dataYear}}
+        </view>
+      
+      </picker>
     </view>
     <view class="content">
-      <view class="con-item" @click="gotoDetail">
-        <view class="triangle">
-          新
-        </view>
-        <view class="item-left">
-          <image src="../../static/pic1.jfif" mode=""></image>
-        </view>
-        <view class="item-right">
-          <view class="item-title">
-            【粤GD10086】共15件
-          </view>
-          <view class="item-date">
-               12-29 15:33
-          </view>
-        </view>
-        <view class="con-right-item">
-          <view class="price">
-            +32.50
-          </view>
-          <!-- <view class="pickUp">
-            待取货
-          </view> -->
-        </view>
-      </view>
-      <view class="con-item">
-<!--        <view class="triangle">
-          新
-        </view> -->
-        <view class="item-left">
-          <image src="../../static/pic.jfif" mode=""></image>
-        </view>
-        <view class="item-right">
-          <view class="item-title">
-            【粤GD10086】共15件
-          </view>
-          <view class="item-date">
-               12-29 15:33
-          </view>
-        </view>
-        <view class="con-right-item">
-          <view class="price">
-            +32.50
-          </view>
-          <!-- <view class="pickUp">
-            待取货
-          </view> -->
-        </view>
-      </view>
-      <view class="con-item">
-       <!-- <view class="triangle">
-          新
-        </view> -->
-        <view class="item-left">
-          <image src="../../static/pic2.png" mode=""></image>
-        </view>
-        <view class="item-right">
-          <view class="item-title">
-            【粤GD10086】共15件
-          </view>
-          <view class="item-date">
-               12-29 15:33
-          </view>
-        </view>
-        <view class="con-right-item">
-          <view class="price">
-            +32.50
-          </view>
-          <view class="pickUp">
-            待取货
-          </view>
-        </view>
-      </view>
+      <orderCom v-for="(item,index) in orderList" :key="index" :item="item"></orderCom>
     </view>
   </view>
 </template>
@@ -88,23 +22,48 @@
     name: "order",
     data() {
       return {
-
+        orderList: {},
+        dataMonth: this.getCurrentMonth(),
+        dataYear: this.getCurrentYear()
       };
     },
-    methods:{
-      gotoDetail(){
-        uni.navigateTo({
-          url:'/pages/orderDetail/orderDetail'
+    mounted() {
+      this.getOrderList()
+    },
+    methods: {
+      bindDateChange: function(e) {
+        this.date = e.target.value
+        this.date = this.date.split('-')
+        this.dataMonth = this.date[1]
+        this.dataYear = this.date[0]
+        console.log(this.date)
+      },
+      getCurrentMonth(){
+        const date = new Date()
+        let month =  date.getMonth()+1
+        month = month > 9 ?month : '0' + month
+        return month
+      },
+      getCurrentYear(){
+        const date = new Date()
+        return date.getFullYear()
+      },
+      async getOrderList(id) {
+        if (id == null) {
+          id = 11000
+        }
+        const {data} = await this.request({
+          url: `/supplement/order/select/${id}`
         })
+        console.log('----',data);
+        this.orderList = data.order
+        console.log('this.orderList'+this.orderList);
       }
     }
   }
 </script>
 
 <style scoped lang="less">
-  // .container{
-  //   margin-bottom: 30rpx;
-  // }
   .con-title {
     display: flex;
     justify-content: space-between;
@@ -112,7 +71,15 @@
     height: 140rpx;
     padding: 0 64rpx;
     border-bottom: 2rpx solid #C5C5C5;
-
+    & picker {
+      display: flex;
+    
+      .tabMonth {
+        font-size: 52rpx;
+        font-weight: 500;
+        margin-right: 6rpx;
+      }
+    }
     .date {
       font-size: 52rpx;
     }
@@ -129,83 +96,4 @@
     }
   }
 
-  .content {
-
-    .con-item {
-      display: flex;
-      align-items: center;
-      // justify-content: space-around;
-      height: 154rpx;
-      width: 100%;
-      border-bottom: 2rpx solid #C5C5C5;
-      position: relative;
-
-      .triangle{
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 60rpx;
-        height: 50rpx;
-        font-size: 22rpx;
-        color: #fff;
-        line-height: 36rpx;
-        padding-left: 5rpx;
-        box-sizing: border-box;
-        clip-path: polygon(0 0, 100% 0 ,0  100%, 0 0);
-        background: #A53131;
-      }
-
-      .item-left {
-        margin-left: 36rpx;
-      
-        & image {
-          width: 100rpx;
-          height: 100rpx;
-          border-radius: 50%;
-        }
-      }
-      
-      .item-right{
-        width: 55%;
-        display: flex;
-        flex-flow: column;
-        margin-left: 28rpx;
-        
-        .item-title{
-          font-size: 28rpx;
-          margin-bottom: 8rpx;
-          white-space: nowrap;
-          text-overflow: ellipsis;
-          overflow: hidden;
-        }
-        
-        .item-date{
-          font-size: 24rpx;
-          color: #808080;
-          padding-left: 16rpx;
-          box-sizing: border-box;
-        }
-      }
-      
-      
-      .con-right-item{
-        text-align: center;
-         // font-size: 28rpx;
-         
-        .price{
-        // margin-top: -40rpx;
-          font-size: 28rpx;
-      }
-      
-      .pickUp{
-        color: #E03030;
-        font-size: 20rpx;
-        margin-top: 6rpx;
-        // margin-left: -50rpx;
-      }
-      }
-     
-    }
-
-  }
 </style>

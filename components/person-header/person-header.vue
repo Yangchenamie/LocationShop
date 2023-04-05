@@ -1,15 +1,15 @@
 <template>
   <view class="content">
     <view class="content-header">
-      <view class="con-left">
-        <img src="../../static/2.jpg" alt="">
+      <view class="con-left" @click="preview">
+        <img :src="avatarurl" alt="">
       </view>
       <view class="con-right">
         <view class="con-name">
-          大白
+          {{nickname}}
         </view>
         <view class="con-num">
-          100******86
+          {{phone}}
         </view>
       </view>
     </view>
@@ -18,12 +18,30 @@
 </template>
 
 <script>
+  import {mapState} from 'vuex'
   export default {
     name:"person-header",
     data() {
       return {
         
       };
+    },
+    computed:{
+      ...mapState('m_user',['avatarurl','nickname','phone'])
+    },
+    methods:{
+      
+      preview(){
+        const imgUrl = uni.getStorageSync('avatarurl')
+        let imgList=[];
+        imgList.push(imgUrl)
+        console.log(imgList);
+        uni.previewImage({
+          current:0,
+          urls:imgList,
+        })
+        console.log(2222222);
+      },
     }
   }
 </script>

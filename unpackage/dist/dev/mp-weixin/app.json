@@ -6,7 +6,16 @@
     "pages/addDetail/addDetail",
     "pages/orderDetail/orderDetail",
     "pages/settings/settings",
-    "pages/evaluation/evaluation"
+    "pages/evaluation/evaluation",
+    "pages/search/search",
+    "pages/station/station",
+    "pages/register/register",
+    "pages/locationReg/locationReg",
+    "pages/orderList/orderList",
+    "pages/GotoOrderDetail/GotoOrderDetail",
+    "pages/privacy/privacy",
+    "pages/changeNickName/changeNickName",
+    "pages/changeStation/changeStation"
   ],
   "subPackages": [],
   "window": {
@@ -39,5 +48,13 @@
       }
     ]
   },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "查询用户地理位置，推荐本地视频，提高用户服务。"
+    }
+  },
+  "requiredPrivateInfos": [
+    "chooseLocation"
+  ],
   "usingComponents": {}
 }

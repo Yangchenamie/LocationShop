@@ -1,7 +1,7 @@
 <template>
     <view class="con-sear">
       <image src="../../static/search.png" mode=""></image>
-      <input type="text" placeholder="搜索">
+      <input type="text" placeholder="搜索" @click="goto">
     </view>
 </template>
 
@@ -12,6 +12,14 @@
       return {
         
       };
+    },
+    methods:{
+      goto(){
+        console.log(1);
+        uni.navigateTo({
+          url:'../search/search'
+        })
+      }
     }
   }
 </script>
